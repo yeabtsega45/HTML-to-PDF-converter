@@ -2,16 +2,14 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const puppeteer = require("puppeteer");
 const cors = require("cors"); // Import the cors package
-import { Router } from "itty-router";
 
 const app = express();
 const port = 3001;
-const router = Router();
 
 app.use(cors()); // Use the CORS middleware
 app.use(bodyParser.json({ limit: "10mb" })); // Increase limit for large HTML content
 
-router.post("/export/pdf", async (req, res) => {
+app.post("/export/pdf", async (req, res) => {
   const { html } = req.body;
 
   if (!html) {
