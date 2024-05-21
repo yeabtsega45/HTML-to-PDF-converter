@@ -4,7 +4,7 @@ const puppeteer = require("puppeteer");
 const cors = require("cors"); // Import the cors package
 
 const app = express();
-const port = 3001;
+const port = 4001;
 
 app.use(cors()); // Use the CORS middleware
 app.use(bodyParser.json({ limit: "10mb" })); // Increase limit for large HTML content
@@ -17,7 +17,9 @@ app.post("/export/pdf", async (req, res) => {
   }
 
   try {
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({
+      executablePath: "/usr/bin/google-chrome", // Adjust this path according to your Render environment
+    });
     const page = await browser.newPage();
     await page.setContent(html, { waitUntil: "networkidle0" });
 
