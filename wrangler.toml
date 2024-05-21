@@ -1,0 +1,13 @@
+name = "html-to-pdf-converter"
+main = "server.js"
+
+account_id = "96a2ba841c2a7f3a6ed19107de69dea3"
+workers_dev = true
+compatibility_date = "2024-05-21"
+node_compat = true
+
+[build]
+command = "npm run build"
+
+[site]
+bucket = "./public"
